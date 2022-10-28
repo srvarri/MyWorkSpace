@@ -1,0 +1,52 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  myVPC1:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.10.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+      - Key: Name
+        Value: myvpc_1
+  web1subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.10.0.0/24
+      Tags:
+      - Key: Name
+        Value: mysubnet1
+      VpcId:
+        Ref: myVPC1
+      AvailabilityZone: us-east-1a
+  web2subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.10.1.0/24
+      Tags:
+      - Key: Name
+        Value: mysubnet2
+      VpcId:
+        Ref: myVPC1
+      AvailabilityZone: us-east-1b
+  web3subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.10.2.0/24
+      Tags:
+      - Key: Name
+        Value: mysubnet3
+      VpcId:
+        Ref: myVPC1
+      AvailabilityZone: us-east-1c
+  web4subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.10.3.0/24
+      Tags:
+      - Key: Name
+        Value: mysubnet4
+      VpcId:
+        Ref: myVPC1
+      AvailabilityZone: us-east-1a
