@@ -16,4 +16,14 @@ pipeline {
             }
         }
     }
-}    
+}   
+---
+ #src=>nodjs(artifacry)
+#archiveArtifacts artifacts: '**/*.js'
+ #src/**/*.js
+
+ stage ( 'artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/*.js'
+            }
+		}
