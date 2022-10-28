@@ -25,3 +25,11 @@ pipeline {
         }    
     }
 }    
+---
+#bin folder=>dotnet (artifact)_file
+#'**/*.dll'
+stage ( 'artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/*.dll'
+            }
+		}
