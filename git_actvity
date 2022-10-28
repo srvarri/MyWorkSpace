@@ -29,8 +29,7 @@ git log --oneline --graph --all=>(HEAD -> kata_on_the_wrong_branch)
 	git checkout kata_pick_your_features
    ls=> sh startKata.sh
    -------------------------
-   #git log --oneline --graph --all
-	 # git checkout -b feature_d
+   
 	 --------
 	  git checkout  kata_pick_your_features
 	  git log --oneline --graph --all
