@@ -1,0 +1,49 @@
+pipeline {
+    agent { label 'JDK11' }
+        stages {
+            stage('vcs') {
+                   steps {
+                       git branch: 'master',
+                       url: 'https://github.com/shopizer-ecommerce/shopizer.git'
+                       
+                    }
+                }
+        stage('JFROG configuration') {
+                    steps {
+                        rtMavenDeployer (
+                            id: 'MAVEN_DEPLOYER',
+                            serverId: 'JFROG_OPENMRS',
+                            releaseRepo: 'qt-libs-release-local',
+                            snapshotRepo: 'qt-libs-snapshot-local'
+                        )
+                    }
+                }
+                
+        stage('maven build') {
+                    steps {
+                        rtMavenRun (
+                            tool: 'MAVEN', // Tool name from Jenkins configuration
+                            pom: 'pom.xml',
+                            goals: 'clean install',
+                            deployerId: "MAVEN_DEPLOYER"
+                            
+                        )
+                    }
+                }
+                
+        stage ('publish build info') {
+                    steps {
+                        rtPublishBuildInfo (
+                            serverId: "JFROG_OPENMRS"
+                        )
+                    }
+                }
+        stage("build & SonarQube analysis") {
+                    steps {
+                      withSonarQubeEnv('SONAR_SH') {
+                        sh 'mvn clean package sonar:sonar'
+                      }
+                    }
+                }
+    }
+}
