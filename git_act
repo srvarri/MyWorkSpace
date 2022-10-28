@@ -1,0 +1,48 @@
+git clone gitkata-upstream.git gitkata-work
+ ls=> gitkata-work/=>cd
+  git checkout kata_on_the_wrong_branch
+  sh startKata.sh => (quickfix)
+  ------------
+  git log --oneline --graph --all
+git checkout kata_on_the_wrong_branch=> head postion change now
+git log --oneline --graph --all=>(HEAD -> kata_on_the_wrong_branch)
+ git rebase quickfix=> Successfully rebased and updated refs/heads/kata_on_the_wrong_branch.
+ git log --oneline --graph --all
+ -------------------
+ --------------------------
+ git log --oneline --graph --all
+ --------------
+ #7354843 This could be wrong..
+ -----------------
+  git rebase -i HEAD~3
+   code . ((kata_one_wrong_commit|REBASE 2/3))
+   git add .
+   git rebase --continu
+   git log --oneline --graph --all
+   ---------------------
+   code .
+   git add .
+   git rebase --continu((kata_one_wrong_commit|REBASE 3/3))
+   #Successfully rebased and updated refs/heads/kata_one_wrong_commit.
+	git log --oneline --graph --all
+	 ----------
+	git checkout kata_pick_your_features
+   ls=> sh startKata.sh
+   -------------------------
+   #git log --oneline --graph --all
+	 # git checkout -b feature_d
+	 --------
+	  git checkout  kata_pick_your_features
+	  git log --oneline --graph --all
+	  --------------------
+	  git checkout -b feature_d
+	   git cherry-pick
+	    git cherry-pick
+		 git cherry-pick
+      ------------------
+git log --oneline --graph --all
+-------------
+git checkout kata_to_many_commits	
+ls=> startKata.sh
+git log --oneline --graph --all
+ git rebase -i HEAD~6
