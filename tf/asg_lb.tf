@@ -182,9 +182,9 @@ resource "aws_lb_target_group" "lb-tg" {
   }
 }
 
-resource "aws_vpc" "lb_vpc" {
-  cidr_block = "192.168.0.0/16"
-}
+#resource "aws_vpc" "lb_vpc" {
+  #cidr_block = "192.168.0.0/16"
+#}
 
 # create aws network-lb
 resource "aws_lb" "n-lb" {
