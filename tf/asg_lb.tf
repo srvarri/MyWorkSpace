@@ -90,7 +90,7 @@ resource "aws_security_group" "temp_sec" {
 
 resource "aws_key_pair" "ssh_key" {
    key_name = "key"
-   public_key = file("C:/Users/gopiv/.ssh/id_rsa.pub")
+   public_key = file("C:/Users/Sairam/.ssh/id_rsa.pub")
   
 }
 
